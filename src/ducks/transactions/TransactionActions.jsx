@@ -21,8 +21,9 @@ import linkOutIcon from 'assets/icons/actions/icon-link-out.svg'
 import linkIcon from 'assets/icons/actions/icon-link.svg'
 import fileIcon from 'assets/icons/actions/icon-file.svg'
 import hourglassIcon from 'assets/icons/icon-hourglass.svg'
-import { getInvoice, getBill, getBillInvoice } from './helpers'
+import { getBill, loadBill, getBillInvoice } from './helpers'
 import FileOpener from './FileOpener'
+import BillOpener from './BillOpener'
 import { findKey } from 'lodash'
 import styles from './TransactionActions.styl'
 import { HealthExpenseStatus, getVendors } from 'ducks/health-expense'
@@ -103,16 +104,26 @@ class _Action extends Component {
     const { type } = this.state
     const { bill, transaction } = this.props
     if (!type) return
-    let invoiceFileId
+    let invoiceFileId, billViewer
     try {
       if (type === BILL_LINK) {
-        invoiceFileId = await getInvoice(transaction)
+        const billToView = await loadBill(transaction)
+        console.log('billToView = ', billToView)
+        billViewer = billToView.viewer
+        if (billViewer) {
+          console.log('WITH BILL VIEWER')
+          this.setState({billViewer, billToView})
+        } else {
+          console.log('WITHOUT BILL VIEWER')
+          invoiceFileId = await getBillInvoice(billToView)
+          console.log('invoiceFileId = ', invoiceFileId)
+        }
       } else if (type === HEALTH_EXPENSE_BILL_LINK && bill) {
         invoiceFileId = await getBillInvoice(bill)
       }
     } catch (e) {
       // TODO: Add sentry to watch if it's always on production
-      console.log('no invoice', bill)
+      console.log('no invoice', bill, e)
     }
     if (invoiceFileId) {
       this.setState({invoiceFileId})
@@ -169,7 +180,7 @@ class _Action extends Component {
   }
 
   getWidget = () => {
-    const { type, vendors, invoiceFileId } = this.state
+    const { type, vendors, billViewer, billToView, invoiceFileId } = this.state
 
     if (type === HEALTH_EXPENSE_STATUS) {
       return <HealthExpenseStatus vendors={vendors} />
@@ -179,7 +190,13 @@ class _Action extends Component {
 
     const isFileOpener = type === BILL_LINK || type === HEALTH_EXPENSE_BILL_LINK
     if (isFileOpener) {
-      if (invoiceFileId) {
+      if (billViewer) {
+        return (
+          <BillOpener getBill={() => billToView}>
+            { genericWidget }
+          </BillOpener>
+        )
+      } else if (invoiceFileId) {
         return (
           <FileOpener getFileId={() => invoiceFileId}>
             { genericWidget }
