@@ -109,7 +109,7 @@ class _Action extends Component {
       if (type === BILL_LINK) {
         const billToView = await loadBill(transaction)
         console.log('billToView = ', billToView)
-        billViewer = billToView.viewer
+        billViewer = billToView.slug
         if (billViewer) {
           console.log('WITH BILL VIEWER')
           this.setState({billViewer, billToView})

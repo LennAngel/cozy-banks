@@ -1077,6 +1077,33 @@
       "bills": [
         "io.cozy.bills:b2v"
       ]
+    },
+    {
+      "demo": true,
+      "automaticCategoryId": "{{ categoryId 'uncategorized' }}",
+      "account": "comptegene1",
+      "label": "Mensualité MAIF",
+      "currency": "€",
+      "amount": -86.31,
+      "date": "2018-01-08T00:00:00Z"
+    },
+    {
+      "demo": true,
+      "automaticCategoryId": "{{ categoryId 'uncategorized' }}",
+      "account": "comptegene1",
+      "label": "Mensualité MAIF",
+      "currency": "€",
+      "amount": -86.31,
+      "date": "2018-02-07T00:00:00Z"
+    },
+    {
+      "demo": true,
+      "automaticCategoryId": "{{ categoryId 'uncategorized' }}",
+      "account": "comptegene1",
+      "label": "Mensualité MAIF",
+      "currency": "€",
+      "amount": -86.31,
+      "date": "2018-03-07T00:00:00Z"
     }
   ],
   "io.cozy.bills": [
