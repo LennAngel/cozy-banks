@@ -1,5 +1,5 @@
 import React from 'react'
-import maifLabsLogo from 'assets/nestor-labs-bank.svg'
+import maifLabsLogo from '../../assets/nestor-labs-bank.svg'
 import styles from './style.styl'
 
 export default () => (
