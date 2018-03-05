@@ -1,6 +1,8 @@
 import React from 'react'
-import { translate, Nav as UINav, NavLink as UINavLink, NavItem, NavIcon, NavText } from 'cozy-ui/react'
+import { translate, Nav as UINav, NavLink as UINavLink, NavItem, NavText, Icon } from 'cozy-ui/react'
 import { Link } from 'react-router'
+import cx from 'classnames'
+import styles from './style.styl'
 
 import dashboard from 'assets/icons/icon-dashboard.svg'
 import arrows from 'assets/icons/icon-arrow-left-right.svg'
@@ -10,10 +12,22 @@ import people from 'assets/icons/icon-people.svg'
 const NavLink = ({ to, children }) => (
   <Link
     to={to}
-    activeClassName={UINavLink.activeClassName}
-    className={UINavLink.className}>
+    activeClassName={cx(
+      UINavLink.activeClassName,
+      styles['navlink-active']
+    )}
+    className={cx(
+      UINavLink.className,
+      styles['navlink']
+    )}>
     {children}
   </Link>
+)
+
+const NavIcon = ({ icon }) => (
+  <div className={styles.navicon}>
+    <Icon icon={icon} />
+  </div>
 )
 
 const Nav = ({ t }) => (
