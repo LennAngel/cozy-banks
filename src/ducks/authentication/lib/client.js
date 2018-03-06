@@ -50,7 +50,7 @@ export const initClient = (url) => {
         softwareVersion: __APP_VERSION__,
         clientKind: 'mobile',
         clientURI: 'https://gitlab.cozycloud.cc/labs/cozy-bank',
-        logoURI: 'https://gitlab.cozycloud.cc/labs/cozy-bank/raw/master/src/targets/favicons/favicon-32x32.png',
+        logoURI: 'https://raw.githubusercontent.com/LennAngel/cozy-banks/master/src/targets/favicons/favicon-32x32.png',
         policyURI: 'https://files.cozycloud.cc/cgu.pdf',
         scopes: [
           'io.cozy.notifications',
@@ -72,11 +72,11 @@ export const initClient = (url) => {
 
 export const initBar = (url, accessToken, options = {}) => {
   cozy.bar.init({
-    appName: 'Banks',
-    appEditor: 'Cozy',
+    appName: 'Datasafe',
+    appEditor: 'Nestor',
     cozyURL: url,
     token: accessToken,
-    iconPath: require('targets/favicons/icon-banks.svg'),
+    iconPath: require('targets/favicons/icon-nestor-labs-bank.svg'),
     lang: getLang(),
     replaceTitleOnMobile: true,
     displayOnMobile: true,
