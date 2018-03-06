@@ -1,7 +1,7 @@
 {
-  "name": "Banks",
+  "name": "Labs Bank",
   "slug": "banks",
-  "icon": "icon-banks.svg",
+  "icon": "icon-nestor-labs-bank.svg",
   "description": "The banking application for Cozy",
   "category": "cozy",
   "version": "0.0.5",
@@ -14,13 +14,13 @@
   "default_locale": "en",
   "locales": {
     "en": {
-      "name": "Banks",
+      "name": "Labs Bank",
       "short_description": "The banking application for Cozy.",
       "long_description": "Banks allows you to monitor your banking transactions in your cozy.",
       "changes": ""
     },
     "fr": {
-      "name": "Banks",
+      "name": "Labs Bank",
       "short_description": "L'application bancaire pour Cozy.",
       "long_description": "Banks vous permet de visualiser très facilement vos opérations bancaires directement dans votre Cozy.",
       "changes": ""
@@ -37,7 +37,7 @@
       "url": "#"
     }
   ],
-  "editor": "Cozy",
+  "editor": "Nestor",
   "screenshots": ["screenshot1.png"],
   "tags": [
     "bank",

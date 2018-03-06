@@ -13,6 +13,7 @@ import 'number-to-locale-string'
 import { setupHistory } from 'utils/history'
 import { getClient } from 'utils/client'
 import { fetchSettingsCollection, initSettings } from 'ducks/settings'
+import nestorIcon from 'assets/Nestor.svg'
 
 if (__TARGET__ === 'mobile') {
   require('styles/mobile.styl')
@@ -44,8 +45,9 @@ const renderAppWithPersistedState = persistedState => {
 
   if (__TARGET__ !== 'mobile') {
     cozy.bar.init({
-      appName: data.cozyAppName,
-      iconPath: data.cozyIconPath,
+      appName: 'Datasafe',
+      appEditor: 'Nestor',
+      iconPath: nestorIcon,
       lang: data.cozyLocale,
       replaceTitleOnMobile: true
     })

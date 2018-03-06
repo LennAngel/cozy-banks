@@ -5,10 +5,12 @@ import { Layout, Content } from 'components/Layout'
 import { Sidebar } from 'cozy-ui/react'
 import { AccountSwitch } from 'ducks/account'
 import Nav from 'ducks/commons/Nav'
+import BrandLogo from 'components/BrandLogo'
 
 export default ({ children }) => (
   <Layout>
     <Sidebar>
+      <BrandLogo />
       <AccountSwitch />
       <Nav />
     </Sidebar>
